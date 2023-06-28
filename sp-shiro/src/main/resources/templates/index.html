@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.thymeleaf.org/thymeleaf-extras-shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+<div>
+    <h1>首页</h1>
+    <p th:text="${msg}"></p>
+
+
+    <div shiro:notAuthenticated>
+        <a th:href="@{/toLogin}">登录</a>
+    </div>
+
+    <hr>
+
+<!--   根据用户权限，控制页面按钮，列表显示与否-->
+    <a shiro:hasPermission="user:add" th:href="@{/user/add}">add</a>   | <a shiro:hasPermission="user:update" th:href="@{/user/update}">update</a>
+</div>
+</body>
+</html>
